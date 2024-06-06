@@ -1,12 +1,11 @@
 ﻿// C# 3
 
 int[] array = { 3, 9, 5, 13, 12, 30 };
-var query = Filter<int>(array, i => i > 5);
-foreach (int value in query) { Console.WriteLine(value); }
-IEnumerable<T> Filter<T>(IEnumerable<T> src, Predicate<T> p)
-{
-    foreach (T value in src)
-    { if (p(value)) yield return value; }
-}
+var query =
+    array
+        .Where(i => i > 5)
+        .Where(i => i % 2 == 0);
 
-delegate bool Predicate<T>(T t);
+foreach (int value in query) { Console.WriteLine(value); }
+
+public delegate bool Predicate<T>(T t);
