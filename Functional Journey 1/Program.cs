@@ -5,7 +5,7 @@ int[] query = Filter(array, GreaterThanFive);
 foreach (int value in query) { Console.WriteLine(value); }
 bool GreaterThanFive(int i) { return i > 5; }
 
-int[] Filter(int[] src, Predicate p)
+int[] Filter(IEnumerable<int> src, Predicate p)
 {
     List<int> dst = new List<int>();
     foreach (int value in src)
