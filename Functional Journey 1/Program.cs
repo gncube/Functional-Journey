@@ -1,7 +1,7 @@
 ﻿// C# 3
 
 int[] array = { 3, 9, 5, 13, 12, 30 };
-var query = Filter<int>(array, (int i) => i > 5);
+var query = Filter<int>(array, i => i > 5);
 foreach (int value in query) { Console.WriteLine(value); }
 IEnumerable<T> Filter<T>(IEnumerable<T> src, Predicate<T> p)
 {
