@@ -1,16 +1,16 @@
 ﻿// C# 2
 
 int[] array = { 3, 9, 5, 13, 12, 30 };
-int[] query = Filter(array, GreaterThanFive);
+IEnumerable<int> query = Filter<int>(array, GreaterThanFive);
 foreach (int value in query) { Console.WriteLine(value); }
 bool GreaterThanFive(int i) { return i > 5; }
 
-int[] Filter(IEnumerable<int> src, Predicate p)
+IEnumerable<T> Filter<T>(IEnumerable<T> src, Predicate<T> p)
 {
-    List<int> dst = new List<int>();
-    foreach (int value in src)
+    List<T> dst = new List<T>();
+    foreach (T value in src)
     { if (p(value)) dst.Add(value); }
     return dst.ToArray();
 }
 
-delegate bool Predicate(int i);
+delegate bool Predicate<T>(T t);
